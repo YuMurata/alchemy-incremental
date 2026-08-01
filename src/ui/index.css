@@ -1,0 +1,38 @@
+/* src/ui/index.css */
+:root {
+  --base-dark: #1a1f26;
+  --base-paper: #e8e0d3;
+  --accent-gold: #c5a059;
+  --accent-fire: #e67e22;
+  --text-primary: #f4f4f4;
+  --text-secondary: #95a5a6;
+}
+
+body {
+  background-color: var(--base-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-areas:
+    "header spirit"
+    "main main"
+    "footer footer";
+  grid-template-columns: 1fr 200px;
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.game-header { grid-area: header; }
+.spirit-panel { grid-area: spirit; background: var(--base-paper); color: var(--base-dark); padding: 1rem; border-radius: 8px; }
+.game-main { grid-area: main; }
+.game-footer { grid-area: footer; }

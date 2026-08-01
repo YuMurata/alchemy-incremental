@@ -1,0 +1,22 @@
+[
+  {"id": "r_01_001", "ingredients": [{"id": "m_water", "amount": 1}, {"id": "m_fire", "amount": 1}], "output": {"id": "m_steam", "amount": 1}, "baseTime": 1, "masteryPoint": 1},
+  {"id": "r_01_002", "ingredients": [{"id": "m_earth", "amount": 1}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_sand", "amount": 1}, "baseTime": 1, "masteryPoint": 1},
+  {"id": "r_01_003", "ingredients": [{"id": "m_water", "amount": 1}, {"id": "m_earth", "amount": 1}], "output": {"id": "m_mud", "amount": 1}, "baseTime": 1, "masteryPoint": 1},
+  {"id": "r_01_004", "ingredients": [{"id": "m_fire", "amount": 1}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_spark", "amount": 1}, "baseTime": 1, "masteryPoint": 1},
+  {"id": "r_02_001", "ingredients": [{"id": "m_sand", "amount": 1}, {"id": "m_fire", "amount": 1}], "output": {"id": "m_glass", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_02_002", "ingredients": [{"id": "m_mud", "amount": 1}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_lumber", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_02_003", "ingredients": [{"id": "m_sand", "amount": 1}, {"id": "m_lumber", "amount": 1}], "output": {"id": "m_fabric", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_02_004", "ingredients": [{"id": "m_mud", "amount": 1}, {"id": "m_fire", "amount": 1}], "output": {"id": "m_pottery", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_02_005", "ingredients": [{"id": "m_water", "amount": 2}, {"id": "m_fire", "amount": 1}], "output": {"id": "m_cloud", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_02_006", "ingredients": [{"id": "m_earth", "amount": 2}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_dust", "amount": 1}, "baseTime": 2, "masteryPoint": 2},
+  {"id": "r_03_001", "ingredients": [{"id": "m_glass", "amount": 1}, {"id": "m_fire", "amount": 1}, {"id": "m_water", "amount": 1}], "output": {"id": "m_lens", "amount": 1}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_002", "ingredients": [{"id": "m_lumber", "amount": 1}, {"id": "m_mud", "amount": 2}], "output": {"id": "m_brick", "amount": 2}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_003", "ingredients": [{"id": "m_fabric", "amount": 1}, {"id": "m_water", "amount": 1}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_sail", "amount": 1}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_004", "ingredients": [{"id": "m_pottery", "amount": 1}, {"id": "m_fire", "amount": 2}], "output": {"id": "m_oil_lamp", "amount": 1}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_005", "ingredients": [{"id": "m_glass", "amount": 2}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_prism", "amount": 1}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_006", "ingredients": [{"id": "m_lumber", "amount": 1}, {"id": "m_fabric", "amount": 2}], "output": {"id": "m_paper", "amount": 3}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_007", "ingredients": [{"id": "m_mud", "amount": 1}, {"id": "m_earth", "amount": 2}], "output": {"id": "m_fertilizer", "amount": 2}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_008", "ingredients": [{"id": "m_spark", "amount": 1}, {"id": "m_fire", "amount": 2}], "output": {"id": "m_charcoal", "amount": 2}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_009", "ingredients": [{"id": "m_steam", "amount": 1}, {"id": "m_water", "amount": 2}], "output": {"id": "m_ice", "amount": 1}, "baseTime": 3, "masteryPoint": 3},
+  {"id": "r_03_010", "ingredients": [{"id": "m_sand", "amount": 2}, {"id": "m_wind", "amount": 1}], "output": {"id": "m_hourglass", "amount": 1}, "baseTime": 3, "masteryPoint": 3}
+]

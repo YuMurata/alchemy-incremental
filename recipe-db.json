@@ -1,0 +1,12 @@
+[
+  {"id": "water", "name": "水", "category": "elements", "base_value": 1, "rank": 1},
+  {"id": "fire", "name": "火", "category": "elements", "base_value": 1, "rank": 1},
+  {"id": "earth", "name": "土", "category": "elements", "base_value": 1, "rank": 1},
+  {"id": "wind", "name": "風", "category": "elements", "base_value": 1, "rank": 1},
+  {"id": "steam", "name": "蒸気", "category": "nature", "ingredients": ["water", "fire"], "base_value": 3, "rank": 2},
+  {"id": "mud", "name": "泥", "category": "nature", "ingredients": ["water", "earth"], "base_value": 3, "rank": 2},
+  {"id": "sand", "name": "砂", "category": "nature", "ingredients": ["earth", "wind"], "base_value": 3, "rank": 2},
+  {"id": "lava", "name": "溶岩", "category": "nature", "ingredients": ["fire", "earth"], "base_value": 5, "rank": 2},
+  {"id": "plant", "name": "植物", "category": "life", "ingredients": ["earth", "water", "wind"], "base_value": 10, "rank": 3},
+  {"id": "ice", "name": "氷", "category": "nature", "ingredients": ["water", "water", "water"], "base_value": 8, "rank": 2}
+]

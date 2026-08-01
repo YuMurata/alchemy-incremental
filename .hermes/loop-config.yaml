@@ -1,0 +1,16 @@
+name: alchemy-coding-loop
+description: 錬金術incremental開発のための自律実装ループ設定
+goals:
+  design_priority: true
+  strict_validation: true
+paths:
+  docs_dir: "./docs"
+  test_cmd: "npm run test"
+agents:
+  maker:
+    role: "implementer"
+    focus: "code_implementation"
+  checker:
+    role: "verifier"
+    focus: "specification_and_test_validation"
+    validation_source: "./docs"

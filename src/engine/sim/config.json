@@ -1,0 +1,10 @@
+{
+  "simulation": {
+    "target_time_seconds": 3600,
+    "click_interval_ms": 100
+  },
+  "strategy": {
+    "priority_materials": ["蒸気", "泥"],
+    "auto_sell_threshold": 100
+  }
+}
