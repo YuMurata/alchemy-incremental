@@ -1,13 +1,13 @@
 services:
   engine:
-    image: node:20-alpine
+    image: node:22
     working_dir: /app
     volumes:
       - .:/app
     command: tail -f /dev/null
 
   cli:
-    image: node:20-alpine
+    image: node:22
     working_dir: /app
     volumes:
       - .:/app
@@ -16,12 +16,12 @@ services:
       - engine
 
   webui:
-    image: node:20-alpine
+    image: node:22
     working_dir: /app
     volumes:
       - .:/app
     ports:
       - "5173:5173"
-    command: npm run dev
+    command: tail -f /dev/null
     depends_on:
       - engine
