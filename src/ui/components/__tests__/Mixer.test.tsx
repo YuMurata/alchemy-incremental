@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import Mixer from '../Mixer';
 import { GameProvider } from '../../hooks/useGameStore';
 
@@ -11,7 +11,6 @@ describe('Mixer Component - Synthesis Logic', () => {
       </GameProvider>
     );
     fireEvent.click(screen.getByRole('button', { name: /合成開始/i }));
-    // 成功演出のフラグが立つか期待
     expect(screen.getByTestId('synthesis-status')).toHaveTextContent('Playing');
   });
 
@@ -23,5 +22,18 @@ describe('Mixer Component - Synthesis Logic', () => {
     );
     fireEvent.click(screen.getByRole('button', { name: /合成開始/i }));
     expect(screen.getByTestId('retry-button')).toBeInTheDocument();
+  });
+
+  it('合成開始時に吸い込み演出がトリガーされること', async () => {
+    render(
+      <GameProvider>
+        <Mixer />
+      </GameProvider>
+    );
+    // act でクリックをラップして状態更新を同期させる
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /合成開始/i }));
+    });
+    expect(screen.getByTestId('suikomi-animation')).toBeInTheDocument();
   });
 });

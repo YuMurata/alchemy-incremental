@@ -29,6 +29,8 @@ const Mixer: React.FC = () => {
       >
         合成開始
       </button>
+      {state.uiState === 'Playing' && <div data-testid="suikomi-animation" className="animation" />}
+
       <div className="status-text">
         現在の状態: {state.uiState}
       </div>
