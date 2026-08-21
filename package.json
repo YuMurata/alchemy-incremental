@@ -4,8 +4,10 @@
   "description": "Incremental alchemy game",
   "main": "index.js",
   "scripts": {
-    "test": "node test-design.js",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "lint": "tsc"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.5",
