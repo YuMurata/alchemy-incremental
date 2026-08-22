@@ -27,8 +27,16 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
       const result = engine.synthesize(recipeId, state.items);
       if (result.success) {
         const newItems = { ...state.items };
-        result.consumedMaterials.forEach(m => newItems[m.id] -= m.amount);
-        newItems[result.output!.id] = (newItems[result.output!.id] || 0) + result.output!.amount;
+        // 素材の消費 (simulatorが返すconsumedMaterialsのみ)
+        result.consumedMaterials.forEach(m => {
+          if (newItems[m.id] !== undefined) {
+            newItems[m.id] -= m.amount;
+          }
+        });
+        // 成果物の追加
+        if (result.output) {
+          newItems[result.output.id] = (newItems[result.output.id] || 0) + result.output.amount;
+        }
         return { ...state, items: newItems, uiState: 'Success' };
       }
       return { ...state, uiState: 'Idle' };
