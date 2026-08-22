@@ -1,47 +1,11 @@
 [
   {
-    "id": "steam",
-    "name": "蒸気",
-    "rank": 2,
-    "ingredients": ["水", "火"],
-    "required_cauldron_rank": 1,
-    "base_value": 10,
-    "failure_message": "釜の中で火が消え、ただの冷水に戻った。"
-  },
-  {
-    "id": "mud",
-    "name": "泥",
-    "rank": 2,
-    "ingredients": ["水", "土"],
-    "required_cauldron_rank": 1,
-    "base_value": 5,
-    "failure_message": "ただのぬかるみができただけだった。"
-  },
-  {
-    "id": "time",
-    "name": "時間",
-    "rank": 4,
-    "ingredients": ["蒸気", "泥"],
-    "required_cauldron_rank": 3,
-    "base_value": 1000,
-    "failure_message": "釜の中の時が止まった..."
-  },
-  {
-    "id": "philosophers_stone",
-    "name": "賢者の石",
-    "rank": 4,
-    "ingredients": ["蒸気", "泥", "時間"],
-    "required_cauldron_rank": 3,
-    "base_value": 5000,
-    "failure_message": "石はただの重い塊になった。"
-  },
-  {
-    "id": "universe",
-    "name": "宇宙",
-    "rank": 4,
-    "ingredients": ["賢者の石", "時間"],
-    "required_cauldron_rank": 4,
-    "base_value": 100000,
-    "failure_message": "宇宙の広大さに釜が耐えられなかった。"
+    "id": "r_test_1",
+    "name": "テスト用素材合成",
+    "ingredients": [{ "id": "水", "name": "水", "amount": 1 }, { "id": "火", "name": "火", "amount": 1 }],
+    "output": { "id": "蒸気", "name": "蒸気", "amount": 1 },
+    "baseTime": 1000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 1
   }
 ]

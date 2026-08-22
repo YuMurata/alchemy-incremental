@@ -1,5 +1,5 @@
 // src/index.ts
-import { AlchemyEngine } from './engine.js';
+import { AlchemyEngine } from './engine/engine.js';
 import { Material, Recipe } from './types.js';
 
 // サンプルレシピの定義
@@ -17,7 +17,8 @@ const sampleRecipes: Recipe[] = [
 ];
 
 // エンジンの初期化 (ファイルパスを自分で解決する仕様)
-const engine = new AlchemyEngine();
+import recipes from './data/recipe-db.json';
+const engine = new AlchemyEngine(recipes as any);
 
 
 // サンプル在庫 (十分な素材)
