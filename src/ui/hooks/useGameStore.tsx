@@ -50,7 +50,7 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
 
         return { ...state, items: newItems, uiState: 'Success', unlockedRecipes: updatedUnlocked };
       }
-      return { ...state, uiState: 'Fail' };
+      return { ...state, uiState: 'Failure' };
     }
     case 'SET_UI_STATE':
       return { ...state, uiState: action.payload };
