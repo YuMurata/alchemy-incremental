@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GameProvider } from './hooks/useGameStore';
 import { GameLayout } from './components/GameLayout';
 import Mixer from './components/Mixer';
