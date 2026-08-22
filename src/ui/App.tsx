@@ -1,11 +1,4 @@
 import React, { useState } from 'react';
-import { GameProvider } from './hooks/useGameStore';
-import { GameLayout } from './components/GameLayout';
-import Mixer from './components/Mixer';
-import AlchemyAnimation from './components/AlchemyAnimation';
-import { InventoryPanel } from './components/InventoryPanel';
-
-import React, { useState } from 'react';
 import { GameProvider, useGameStore } from './hooks/useGameStore';
 import { GameLayout } from './components/GameLayout';
 import Mixer from './components/Mixer';
@@ -36,7 +29,11 @@ const AppContent: React.FC = () => {
             <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
             <div className="synthesis-status">
               <h3>選択中:</h3>
-              {selectedMaterials.map((m, i) => <span key={i}>{m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button></span>)}
+              {selectedMaterials.map((m, i) => (
+                <span key={i}>
+                  {m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
+                </span>
+              ))}
             </div>
           </div>
         ),
