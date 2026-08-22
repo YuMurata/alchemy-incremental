@@ -11,9 +11,10 @@ interface Action {
 }
 
 const initialState: GameStore = {
-  items: { "水": 10, "火": 10 },
+  items: { "火のエレメント": 999, "水のエレメント": 999, "風のエレメント": 999, "土のエレメント": 999 },
   spirit: { level: 1, exp: 0 },
   uiState: 'Idle',
+  unlockedRecipes: [],
 };
 
 const gameReducer = (state: GameStore, action: Action): GameStore => {
@@ -35,9 +36,15 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
         });
         // 成果物の追加
         if (result.output) {
-          newItems[result.output.id] = (newItems[result.output.id] || 0) + result.output.amount;
+          newItems[result.output.name] = (newItems[result.output.name] || 0) + result.output.amount;
         }
-        return { ...state, items: newItems, uiState: 'Success' };
+        
+        // レシピアンロック
+        const updatedUnlocked = state.unlockedRecipes.includes(recipeId) 
+          ? state.unlockedRecipes 
+          : [...state.unlockedRecipes, recipeId];
+
+        return { ...state, items: newItems, uiState: 'Success', unlockedRecipes: updatedUnlocked };
       }
       return { ...state, uiState: 'Idle' };
     }

@@ -56,7 +56,7 @@ const AppContent: React.FC = () => {
     <GameLayout
       children={{
         header: <h1>Alchemy Incremental</h1>,
-        spiritPanel: <div>精霊レベル: 1</div>,
+        spiritPanel: <></>,
         main: (
           <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr 250px', gap: '20px' }}>
             <div className="left-panel">

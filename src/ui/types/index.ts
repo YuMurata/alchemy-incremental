@@ -22,4 +22,5 @@ export interface GameStore {
   items: Record<string, number>;
   spirit: { level: number; exp: number };
   uiState: UIState;
+  unlockedRecipes: string[];
 }
