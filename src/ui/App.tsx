@@ -7,6 +7,7 @@ import { QuickMaterialPanel } from './components/QuickMaterialPanel';
 
 import { RecipeBook } from './components/RecipeBook';
 import { BuddyPanel } from './components/BuddyPanel';
+import recipes from '../data/recipe-db.json';
 
 const AppContent: React.FC = () => {
   const { state } = useGameStore();
@@ -18,9 +19,22 @@ const AppContent: React.FC = () => {
   };
 
   const synthesize = () => {
-    console.log('合成実行:', selectedMaterials);
-    // TODO: ここに合成ロジック(dispatch)を繋ぐ
-    setSelectedMaterials([]);
+    // 選択された素材のIDを特定する必要があるが、現状UIは名前を渡している。
+    // recipe-db.json を確認すると id と name がある。
+    // ここで簡単なマッチングを行い、IDを特定する。
+    const recipe = recipes.find(r => {
+      const ingredientIds = r.ingredients.map((ing: any) => ing.id);
+      return selectedMaterials.length === ingredientIds.length &&
+             selectedMaterials.every(m => ingredientIds.includes(m));
+    });
+
+    if (recipe) {
+      console.log('合成実行:', recipe.id);
+      dispatch({ type: 'SYNTHESIZE', payload: { recipeId: recipe.id } });
+      setSelectedMaterials([]);
+    } else {
+      alert("その組み合わせのレシピはありません。");
+    }
   };
 
   return (
