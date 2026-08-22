@@ -2,7 +2,8 @@ import React from 'react';
 import { GameProvider } from './hooks/useGameStore';
 import { GameLayout } from './components/GameLayout';
 import Mixer from './components/Mixer';
-import { Inventory } from './components/Inventory';
+import AlchemyAnimation from './components/AlchemyAnimation';
+import { InventoryPanel } from './components/InventoryPanel';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +14,8 @@ const App: React.FC = () => {
           spiritPanel: <div>精霊レベル: 1</div>,
           main: (
             <>
-              <Inventory />
+              <AlchemyAnimation />
+              <InventoryPanel />
               <Mixer />
             </>
           ),
