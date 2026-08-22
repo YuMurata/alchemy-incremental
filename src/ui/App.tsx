@@ -8,10 +8,12 @@ import { InventoryPanel } from './components/InventoryPanel';
 const App: React.FC = () => {
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
 
-  const toggleMaterial = (name: string) => {
-    setSelectedMaterials(prev => 
-      prev.includes(name) ? prev.filter(m => m !== name) : [...prev, name]
-    );
+  const addMaterial = (name: string) => {
+    setSelectedMaterials(prev => [...prev, name]);
+  };
+
+  const removeMaterial = (index: number) => {
+    setSelectedMaterials(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -23,7 +25,7 @@ const App: React.FC = () => {
           main: (
             <>
               <AlchemyAnimation selectedMaterials={selectedMaterials} />
-              <InventoryPanel onToggleMaterial={toggleMaterial} selectedMaterials={selectedMaterials} />
+              <InventoryPanel onAddMaterial={addMaterial} onRemoveMaterial={removeMaterial} selectedMaterials={selectedMaterials} />
               <Mixer />
             </>
           ),
