@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
 
   const addMaterial = (name: string) => {
-    setSelectedMaterials(prev => [...prev, name]);
+    setSelectedMaterials(prev => prev.length < 3 ? [...prev, name] : prev);
   };
 
   const removeMaterial = (index: number) => {
@@ -24,8 +24,17 @@ const App: React.FC = () => {
           spiritPanel: <div>精霊レベル: 1</div>,
           main: (
             <>
-              <AlchemyAnimation selectedMaterials={selectedMaterials} />
+              <AlchemyAnimation />
               <InventoryPanel onAddMaterial={addMaterial} onRemoveMaterial={removeMaterial} selectedMaterials={selectedMaterials} />
+              <div className="synthesis-area" style={{ border: '2px solid #555', padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
+                <h3>合成エリア</h3>
+                <div style={{ display: 'flex', gap: '10px', margin: '10px 0' }}>
+                  {selectedMaterials.map((m, i) => (
+                    <span key={i} style={{ padding: '5px 10px', background: '#333', borderRadius: '4px' }}>{m}</span>
+                  ))}
+                </div>
+                {selectedMaterials.length > 0 && <button>合成開始</button>}
+              </div>
               <Mixer />
             </>
           ),
