@@ -24,7 +24,8 @@ export const CauldronArea: React.FC<{ selectedMaterials: string[], onSynthesize:
                 'fire': '火',
                 'water': '水',
                 'wind': '風',
-                'earth': '土'
+                'earth': '土',
+                'steam': '蒸気'
               };
               const displayName = elementNames[m] || m;
               return (

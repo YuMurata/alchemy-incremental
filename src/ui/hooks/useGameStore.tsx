@@ -10,9 +10,13 @@ export interface Action {
   payload: any;
 }
 
+const items: Record<string, number> = { 
+  "m_water": 999, "m_fire": 999, "m_wind": 999, "m_earth": 999, 
+  "water": 999, "fire": 999, "steam": 1 
+};
 // 初期状態の設定（テスト用）
 const initialState: GameStore = {
-  items: { "m_water": 999, "m_fire": 999, "m_wind": 999, "m_earth": 999, "water": 999, "fire": 999 },
+  items: items,
   spirit: { level: 1, exp: 0 },
   uiState: 'Idle',
   unlockedRecipes: [],

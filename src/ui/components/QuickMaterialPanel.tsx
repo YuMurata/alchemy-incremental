@@ -9,7 +9,8 @@ export const QuickMaterialPanel: React.FC<{
     'fire': '火',
     'water': '水',
     'wind': '風',
-    'earth': '土'
+    'earth': '土',
+    'steam': '蒸気'
   };
 
   return (
