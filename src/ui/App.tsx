@@ -34,9 +34,6 @@ const AppContent: React.FC = () => {
   };
 
   const synthesize = () => {
-    // 選択された素材のIDを特定する必要があるが、現状UIは名前を渡している。
-    // recipe-db.json を確認すると id と name がある。
-    // ここで簡単なマッチングを行い、IDを特定する。
     const recipe = recipes.find(r => {
       const ingredientIds = r.ingredients.map((ing: any) => ing.id);
       return selectedMaterials.length === ingredientIds.length &&
@@ -44,9 +41,11 @@ const AppContent: React.FC = () => {
     });
 
     if (recipe) {
-      console.log('合成実行:', recipe.id);
       dispatch({ type: 'SYNTHESIZE', payload: { recipeId: recipe.id } });
       setSelectedMaterials([]);
+      // 成功演出: 妖精が喜ぶ（妖精のゴールドが増えるインタラクション）
+      setFairyGold(prev => prev + 50);
+      alert(`${recipe.name} を合成しました！`);
     } else {
       alert("その組み合わせのレシピはありません。");
     }
