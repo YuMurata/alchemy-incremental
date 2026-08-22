@@ -1,7 +1,4 @@
-// src/engine.ts
-import { SynthesisResult, Recipe } from './types';
-import * as fs from 'fs';
-import * as path from 'path';
+import { SynthesisResult, Recipe } from '../types';
 
 /**
  * 合成エンジン
@@ -10,23 +7,12 @@ import * as path from 'path';
 export class AlchemyEngine {
   private recipes: Recipe[] = [];
 
-  constructor(dbPath: string = '/app/data/recipe-db.json') {
-    this.loadRecipes(dbPath);
-  }
-
-  private loadRecipes(dbPath: string): void {
-    try {
-      const data = fs.readFileSync(dbPath, 'utf-8');
-      this.recipes = JSON.parse(data);
-    } catch (e) {
-      console.error(`Failed to load recipe DB: ${dbPath}`, e);
-      this.recipes = [];
-    }
+  constructor(recipes: Recipe[]) {
+    this.recipes = recipes;
   }
 
   synthesize(recipeId: string, inventory: Record<string, number>): SynthesisResult {
     const recipe = this.recipes.find(r => r.id === recipeId);
-
 
     if (!recipe) {
       return {
@@ -71,7 +57,6 @@ export class AlchemyEngine {
 
   // 再創世の実行
   resetUniverse(inventory: Record<string, number>): { crystals: number } {
-    // 結晶の獲得量計算 (すべての素材の amount 合計 * 0.01)
     const totalValue = Object.values(inventory).reduce((sum, val) => sum + val, 0);
     const crystals = Math.floor(totalValue * 0.01);
     return { crystals };

@@ -1,20 +1,16 @@
-import * as fs from 'fs';
-import { Recipe, SynthesisResult } from './types';
+import { Recipe, SynthesisResult } from '../types';
 
 export class AlchemyEngine {
   private recipes: Recipe[];
 
-  constructor(dbPath: string) {
-    const data = fs.readFileSync(dbPath, 'utf8');
-    this.recipes = JSON.parse(data);
+  constructor(recipes: Recipe[]) {
+    this.recipes = recipes;
   }
 
   // 宇宙作成のための強制ループ
   simulateAutoAlchemy(inventory: Record<string, number>, gold: number, cauldronRank: number) {
-    // 毎tick、基本素材を供給
     ["水", "火", "土"].forEach(mat => inventory[mat] = (inventory[mat] || 0) + 100);
 
-    // 宇宙作成に必要な素材を順番に強制合成
     const sequence = [
         { name: "蒸気", ingredients: ["水", "火"] },
         { name: "泥", ingredients: ["水", "土"] },
@@ -39,7 +35,6 @@ export class AlchemyEngine {
     const sortedInput = [...ingredients].sort();
 
     for (const recipe of this.recipes) {
-      // 実際には recipe.ingredients は Material[] なので、名前のリストを作る必要がある
       const sortedRecipeNames = recipe.ingredients.map(m => m.name).sort();
       
       if (sortedInput.length === sortedRecipeNames.length &&
@@ -75,14 +70,13 @@ export class AlchemyEngine {
   checkVictory(inventory: Record<string, number>): boolean {
     return (inventory["宇宙"] || 0) >= 1;
   }
-  // プレステージ（転生）ロジックの実装
+
   prestige(inventory: Record<string, number>, gold: number, memoryCrystals: number): { inventory: Record<string, number>, gold: number, memoryCrystals: number, message: string } {
     this.playEndingEffects();
 
-    // 転生後の初期状態へリセット
     const newInventory: Record<string, number> = { "水": 0, "火": 0, "土": 0 };
     const newGold = 0;
-    const newMemoryCrystals = memoryCrystals + 1; // 記憶の結晶を+1
+    const newMemoryCrystals = memoryCrystals + 1; 
 
     return {
       inventory: newInventory,
