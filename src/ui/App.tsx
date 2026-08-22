@@ -6,6 +6,14 @@ import AlchemyAnimation from './components/AlchemyAnimation';
 import { InventoryPanel } from './components/InventoryPanel';
 
 const App: React.FC = () => {
+  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+
+  const toggleMaterial = (name: string) => {
+    setSelectedMaterials(prev => 
+      prev.includes(name) ? prev.filter(m => m !== name) : [...prev, name]
+    );
+  };
+
   return (
     <GameProvider>
       <GameLayout
@@ -14,8 +22,8 @@ const App: React.FC = () => {
           spiritPanel: <div>精霊レベル: 1</div>,
           main: (
             <>
-              <AlchemyAnimation />
-              <InventoryPanel />
+              <AlchemyAnimation selectedMaterials={selectedMaterials} />
+              <InventoryPanel onToggleMaterial={toggleMaterial} selectedMaterials={selectedMaterials} />
               <Mixer />
             </>
           ),
