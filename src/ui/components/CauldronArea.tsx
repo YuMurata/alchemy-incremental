@@ -19,11 +19,20 @@ export const CauldronArea: React.FC<{ selectedMaterials: string[], onSynthesize:
       <div style={{ marginBottom: '20px' }}>
         {selectedMaterials.length > 0 ? (
           <div style={{ display: 'flex', gap: '10px' }}>
-            {selectedMaterials.map((m, i) => (
-              <span key={i} style={{ padding: '8px 15px', background: '#5d3a1a', borderRadius: '50%', border: '1px solid #d4af37' }}>
-                {m}
-              </span>
-            ))}
+            {selectedMaterials.map((m, i) => {
+              const elementNames: Record<string, string> = {
+                'fire': '火',
+                'water': '水',
+                'wind': '風',
+                'earth': '土'
+              };
+              const displayName = elementNames[m] || m;
+              return (
+                <span key={i} style={{ padding: '8px 15px', background: '#5d3a1a', borderRadius: '50%', border: '1px solid #d4af37' }}>
+                  {displayName}
+                </span>
+              );
+            })}
           </div>
         ) : (
           <p>大釜は空です...</p>

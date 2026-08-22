@@ -4,9 +4,14 @@ export const QuickMaterialPanel: React.FC<{
   onAddMaterial: (name: string) => void,
   items: Record<string, number>
 }> = ({ onAddMaterial, items }) => {
-  // エレメント系は無限（表示しない）
-  const infiniteMaterials = ['fire_el', 'water_el', 'wind_el', 'earth_el'];
-  
+  const infiniteMaterials = ['fire', 'water', 'wind', 'earth'];
+  const elementNames: Record<string, string> = {
+    'fire': '火',
+    'water': '水',
+    'wind': '風',
+    'earth': '土'
+  };
+
   return (
     <div className="quick-material-panel" style={{ 
       gridArea: 'mats',
@@ -20,9 +25,10 @@ export const QuickMaterialPanel: React.FC<{
       <h3>素材リスト</h3>
       {Object.entries(items).map(([name, count]) => {
         const isInfinite = infiniteMaterials.includes(name);
+        const displayName = elementNames[name] || name;
         return (
           <button key={name} onClick={() => onAddMaterial(name)} style={{ padding: '10px' }}>
-            {name} {isInfinite ? '' : `(${count})`}
+            {displayName} {isInfinite ? '' : `(${count})`}
           </button>
         );
       })}

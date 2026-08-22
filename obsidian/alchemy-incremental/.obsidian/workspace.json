@@ -11,14 +11,13 @@
             "id": "89213ec4e9c7b128",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "ようこそ.md",
-                "mode": "source",
-                "source": false
+                "file": "無題のファイル.base",
+                "viewName": "表"
               },
-              "icon": "lucide-file",
-              "title": "ようこそ"
+              "icon": "lucide-table",
+              "title": "無題のファイル"
             }
           }
         ]
@@ -115,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ようこそ.md",
+                "file": "無題のファイル.base",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ようこそ.md",
+                "file": "無題のファイル.base",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -177,7 +176,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ようこそ.md",
+                "file": "無題のファイル.base",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -204,8 +203,9 @@
       "bases:新規ベースを作成": false
     }
   },
-  "active": "89213ec4e9c7b128",
+  "active": "5ffe49f6c1f8c976",
   "lastOpenFiles": [
+    "無題のファイル.base",
     "ようこそ.md"
   ]
 }
