@@ -21,6 +21,10 @@ export const CauldronArea: React.FC<{ selectedMaterials: string[], onSynthesize:
           <div style={{ display: 'flex', gap: '10px' }}>
             {selectedMaterials.map((m, i) => {
               const elementNames: Record<string, string> = {
+                'e_fire': '火（エレメント）',
+                'e_water': '水（エレメント）',
+                'e_wind': '風（エレメント）',
+                'e_earth': '土（エレメント）',
                 'fire': '火',
                 'water': '水',
                 'wind': '風',

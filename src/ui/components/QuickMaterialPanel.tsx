@@ -4,8 +4,13 @@ export const QuickMaterialPanel: React.FC<{
   onAddMaterial: (name: string) => void,
   items: Record<string, number>
 }> = ({ onAddMaterial, items }) => {
-  const infiniteMaterials = ['fire', 'water', 'wind', 'earth'];
+  // エレメント系は無限（表示しない）
+  const infiniteMaterials = ['e_fire', 'e_water', 'e_wind', 'e_earth'];
   const elementNames: Record<string, string> = {
+    'e_fire': '火（エレメント）',
+    'e_water': '水（エレメント）',
+    'e_wind': '風（エレメント）',
+    'e_earth': '土（エレメント）',
     'fire': '火',
     'water': '水',
     'wind': '風',
