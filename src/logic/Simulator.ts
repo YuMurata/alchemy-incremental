@@ -4,7 +4,7 @@ import { SynthesisResult, Recipe } from '../types';
  * 合成エンジン
  * 純粋なロジックとして JSON を返す
  */
-export class AlchemyEngine {
+export class Simulator {
   private recipes: Recipe[] = [];
 
   constructor(recipes: Recipe[]) {

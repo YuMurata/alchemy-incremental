@@ -1,11 +1,1182 @@
 [
   {
-    "id": "r_test_1",
-    "name": "テスト用素材合成",
-    "ingredients": [{ "id": "水", "name": "水", "amount": 1 }, { "id": "火", "name": "火", "amount": 1 }],
-    "output": { "id": "蒸気", "name": "蒸気", "amount": 1 },
+    "id": "r_base_fire_el",
+    "name": "火のエレメント",
+    "ingredients": [
+      {
+        "id": "fire_el",
+        "name": "火のエレメント",
+        "amount": 2
+      }
+    ],
+    "output": {
+      "id": "fire",
+      "name": "火",
+      "amount": 1
+    },
     "baseTime": 1000,
-    "masteryPoint": 10,
+    "masteryPoint": 1,
     "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_base_water_el",
+    "name": "水のエレメント",
+    "ingredients": [
+      {
+        "id": "water_el",
+        "name": "水のエレメント",
+        "amount": 2
+      }
+    ],
+    "output": {
+      "id": "water",
+      "name": "水",
+      "amount": 1
+    },
+    "baseTime": 1000,
+    "masteryPoint": 1,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_base_wind_el",
+    "name": "風のエレメント",
+    "ingredients": [
+      {
+        "id": "wind_el",
+        "name": "風のエレメント",
+        "amount": 2
+      }
+    ],
+    "output": {
+      "id": "wind",
+      "name": "風",
+      "amount": 1
+    },
+    "baseTime": 1000,
+    "masteryPoint": 1,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_base_earth_el",
+    "name": "土のエレメント",
+    "ingredients": [
+      {
+        "id": "earth_el",
+        "name": "土のエレメント",
+        "amount": 2
+      }
+    ],
+    "output": {
+      "id": "earth",
+      "name": "土",
+      "amount": 1
+    },
+    "baseTime": 1000,
+    "masteryPoint": 1,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_steam",
+    "name": "蒸気",
+    "ingredients": [
+      {
+        "id": "water",
+        "name": "water",
+        "amount": 1
+      },
+      {
+        "id": "fire",
+        "name": "fire",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "steam",
+      "name": "蒸気",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_mud",
+    "name": "泥",
+    "ingredients": [
+      {
+        "id": "water",
+        "name": "water",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "earth",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "mud",
+      "name": "泥",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_mist",
+    "name": "霧",
+    "ingredients": [
+      {
+        "id": "water",
+        "name": "water",
+        "amount": 1
+      },
+      {
+        "id": "wind",
+        "name": "wind",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "mist",
+      "name": "霧",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_lava",
+    "name": "溶岩",
+    "ingredients": [
+      {
+        "id": "fire",
+        "name": "fire",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "earth",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "lava",
+      "name": "溶岩",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_heat",
+    "name": "熱",
+    "ingredients": [
+      {
+        "id": "fire",
+        "name": "fire",
+        "amount": 1
+      },
+      {
+        "id": "wind",
+        "name": "wind",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "heat",
+      "name": "熱",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_dust",
+    "name": "砂塵",
+    "ingredients": [
+      {
+        "id": "earth",
+        "name": "earth",
+        "amount": 1
+      },
+      {
+        "id": "wind",
+        "name": "wind",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "dust",
+      "name": "砂塵",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_clay",
+    "name": "粘土",
+    "ingredients": [
+      {
+        "id": "steam",
+        "name": "steam",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "earth",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "clay",
+      "name": "粘土",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_plasma",
+    "name": "プラズマ",
+    "ingredients": [
+      {
+        "id": "steam",
+        "name": "steam",
+        "amount": 1
+      },
+      {
+        "id": "fire",
+        "name": "fire",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "plasma",
+      "name": "プラズマ",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_brick",
+    "name": "レンガ",
+    "ingredients": [
+      {
+        "id": "mud",
+        "name": "mud",
+        "amount": 1
+      },
+      {
+        "id": "fire",
+        "name": "fire",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "brick",
+      "name": "レンガ",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_cloud",
+    "name": "雲",
+    "ingredients": [
+      {
+        "id": "mist",
+        "name": "mist",
+        "amount": 1
+      },
+      {
+        "id": "wind",
+        "name": "wind",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "cloud",
+      "name": "雲",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_obsidian",
+    "name": "黒曜石",
+    "ingredients": [
+      {
+        "id": "lava",
+        "name": "lava",
+        "amount": 1
+      },
+      {
+        "id": "water",
+        "name": "water",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "obsidian",
+      "name": "黒曜石",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_wet_dust",
+    "name": "湿った砂",
+    "ingredients": [
+      {
+        "id": "dust",
+        "name": "dust",
+        "amount": 1
+      },
+      {
+        "id": "water",
+        "name": "water",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "wet_dust",
+      "name": "湿った砂",
+      "amount": 1
+    },
+    "baseTime": 2000,
+    "masteryPoint": 5,
+    "required_cauldron_rank": 1
+  },
+  {
+    "id": "r_generic_16",
+    "name": "謎の物質_16",
+    "ingredients": [
+      {
+        "id": "material_15",
+        "name": "謎の物質_15",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_16",
+      "name": "謎の物質_16",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_17",
+    "name": "謎の物質_17",
+    "ingredients": [
+      {
+        "id": "material_16",
+        "name": "謎の物質_16",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_17",
+      "name": "謎の物質_17",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_18",
+    "name": "謎の物質_18",
+    "ingredients": [
+      {
+        "id": "material_17",
+        "name": "謎の物質_17",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_18",
+      "name": "謎の物質_18",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_19",
+    "name": "謎の物質_19",
+    "ingredients": [
+      {
+        "id": "material_18",
+        "name": "謎の物質_18",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_19",
+      "name": "謎の物質_19",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_20",
+    "name": "謎の物質_20",
+    "ingredients": [
+      {
+        "id": "material_19",
+        "name": "謎の物質_19",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_20",
+      "name": "謎の物質_20",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_21",
+    "name": "謎の物質_21",
+    "ingredients": [
+      {
+        "id": "material_20",
+        "name": "謎の物質_20",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_21",
+      "name": "謎の物質_21",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_22",
+    "name": "謎の物質_22",
+    "ingredients": [
+      {
+        "id": "material_21",
+        "name": "謎の物質_21",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_22",
+      "name": "謎の物質_22",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_23",
+    "name": "謎の物質_23",
+    "ingredients": [
+      {
+        "id": "material_22",
+        "name": "謎の物質_22",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_23",
+      "name": "謎の物質_23",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_24",
+    "name": "謎の物質_24",
+    "ingredients": [
+      {
+        "id": "material_23",
+        "name": "謎の物質_23",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_24",
+      "name": "謎の物質_24",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_25",
+    "name": "謎の物質_25",
+    "ingredients": [
+      {
+        "id": "material_24",
+        "name": "謎の物質_24",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_25",
+      "name": "謎の物質_25",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_26",
+    "name": "謎の物質_26",
+    "ingredients": [
+      {
+        "id": "material_25",
+        "name": "謎の物質_25",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_26",
+      "name": "謎の物質_26",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_27",
+    "name": "謎の物質_27",
+    "ingredients": [
+      {
+        "id": "material_26",
+        "name": "謎の物質_26",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_27",
+      "name": "謎の物質_27",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_28",
+    "name": "謎の物質_28",
+    "ingredients": [
+      {
+        "id": "material_27",
+        "name": "謎の物質_27",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_28",
+      "name": "謎の物質_28",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_29",
+    "name": "謎の物質_29",
+    "ingredients": [
+      {
+        "id": "material_28",
+        "name": "謎の物質_28",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_29",
+      "name": "謎の物質_29",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_30",
+    "name": "謎の物質_30",
+    "ingredients": [
+      {
+        "id": "material_29",
+        "name": "謎の物質_29",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_30",
+      "name": "謎の物質_30",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_31",
+    "name": "謎の物質_31",
+    "ingredients": [
+      {
+        "id": "material_30",
+        "name": "謎の物質_30",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_31",
+      "name": "謎の物質_31",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_32",
+    "name": "謎の物質_32",
+    "ingredients": [
+      {
+        "id": "material_31",
+        "name": "謎の物質_31",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_32",
+      "name": "謎の物質_32",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_33",
+    "name": "謎の物質_33",
+    "ingredients": [
+      {
+        "id": "material_32",
+        "name": "謎の物質_32",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_33",
+      "name": "謎の物質_33",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_34",
+    "name": "謎の物質_34",
+    "ingredients": [
+      {
+        "id": "material_33",
+        "name": "謎の物質_33",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_34",
+      "name": "謎の物質_34",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_35",
+    "name": "謎の物質_35",
+    "ingredients": [
+      {
+        "id": "material_34",
+        "name": "謎の物質_34",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_35",
+      "name": "謎の物質_35",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_36",
+    "name": "謎の物質_36",
+    "ingredients": [
+      {
+        "id": "material_35",
+        "name": "謎の物質_35",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_36",
+      "name": "謎の物質_36",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_37",
+    "name": "謎の物質_37",
+    "ingredients": [
+      {
+        "id": "material_36",
+        "name": "謎の物質_36",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_37",
+      "name": "謎の物質_37",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_38",
+    "name": "謎の物質_38",
+    "ingredients": [
+      {
+        "id": "material_37",
+        "name": "謎の物質_37",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_38",
+      "name": "謎の物質_38",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_39",
+    "name": "謎の物質_39",
+    "ingredients": [
+      {
+        "id": "material_38",
+        "name": "謎の物質_38",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_39",
+      "name": "謎の物質_39",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_40",
+    "name": "謎の物質_40",
+    "ingredients": [
+      {
+        "id": "material_39",
+        "name": "謎の物質_39",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_40",
+      "name": "謎の物質_40",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_41",
+    "name": "謎の物質_41",
+    "ingredients": [
+      {
+        "id": "material_40",
+        "name": "謎の物質_40",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_41",
+      "name": "謎の物質_41",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_42",
+    "name": "謎の物質_42",
+    "ingredients": [
+      {
+        "id": "material_41",
+        "name": "謎の物質_41",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_42",
+      "name": "謎の物質_42",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_43",
+    "name": "謎の物質_43",
+    "ingredients": [
+      {
+        "id": "material_42",
+        "name": "謎の物質_42",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_43",
+      "name": "謎の物質_43",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_44",
+    "name": "謎の物質_44",
+    "ingredients": [
+      {
+        "id": "material_43",
+        "name": "謎の物質_43",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_44",
+      "name": "謎の物質_44",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_45",
+    "name": "謎の物質_45",
+    "ingredients": [
+      {
+        "id": "material_44",
+        "name": "謎の物質_44",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_45",
+      "name": "謎の物質_45",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_46",
+    "name": "謎の物質_46",
+    "ingredients": [
+      {
+        "id": "material_45",
+        "name": "謎の物質_45",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_46",
+      "name": "謎の物質_46",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_47",
+    "name": "謎の物質_47",
+    "ingredients": [
+      {
+        "id": "material_46",
+        "name": "謎の物質_46",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_47",
+      "name": "謎の物質_47",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_48",
+    "name": "謎の物質_48",
+    "ingredients": [
+      {
+        "id": "material_47",
+        "name": "謎の物質_47",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_48",
+      "name": "謎の物質_48",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
+  },
+  {
+    "id": "r_generic_49",
+    "name": "謎の物質_49",
+    "ingredients": [
+      {
+        "id": "material_48",
+        "name": "謎の物質_48",
+        "amount": 1
+      },
+      {
+        "id": "earth",
+        "name": "土",
+        "amount": 1
+      }
+    ],
+    "output": {
+      "id": "material_49",
+      "name": "謎の物質_49",
+      "amount": 1
+    },
+    "baseTime": 3000,
+    "masteryPoint": 10,
+    "required_cauldron_rank": 2
   }
 ]

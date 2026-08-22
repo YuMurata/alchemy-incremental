@@ -7,12 +7,13 @@ const Mixer: React.FC = () => {
 
   const handleMix = async () => {
     dispatch({ type: 'SET_UI_STATE', payload: 'Playing' });
-    console.log('Mixing items:', selectedItems);
+    
+    // シミュレーション: "r_test_1" を合成
+    dispatch({ type: 'SYNTHESIZE', payload: { recipeId: 'r_test_1' } });
     
     setTimeout(() => {
-      dispatch({ type: 'SET_UI_STATE', payload: 'Success' });
-      setTimeout(() => dispatch({ type: 'SET_UI_STATE', payload: 'Idle' }), 1000);
-    }, 500);
+      dispatch({ type: 'SET_UI_STATE', payload: 'Idle' });
+    }, 1000);
   };
 
   return (

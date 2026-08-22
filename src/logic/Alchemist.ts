@@ -1,6 +1,6 @@
 import { Recipe, SynthesisResult } from '../types';
 
-export class AlchemyEngine {
+export class Alchemist {
   private recipes: Recipe[];
 
   constructor(recipes: Recipe[]) {
