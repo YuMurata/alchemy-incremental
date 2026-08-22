@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GameProvider, useGameStore } from './hooks/useGameStore';
+import { GameProvider, useGameStore, Action } from './hooks/useGameStore';
 import { GameLayout } from './components/GameLayout';
 import Mixer from './components/Mixer';
 import { CauldronArea } from './components/CauldronArea';
@@ -10,7 +10,7 @@ import { BuddyPanel } from './components/BuddyPanel';
 import recipes from '../data/recipe-db.json';
 
 const AppContent: React.FC = () => {
-  const { state } = useGameStore();
+  const { state, dispatch } = useGameStore() as { state: any, dispatch: React.Dispatch<Action> };
   const [spiritLevel, setSpiritLevel] = useState(1);
   const [homunculusFuel, setHomunculusFuel] = useState(0);
   const [fairyGold, setFairyGold] = useState(0);

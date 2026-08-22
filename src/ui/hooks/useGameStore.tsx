@@ -5,13 +5,14 @@ import { Simulator } from '../../logic/Simulator';
 
 const engine = new Simulator(recipes as any);
 
-interface Action {
+export interface Action {
   type: 'SET_UI_STATE' | 'UPDATE_STATE' | 'SYNTHESIZE';
   payload: any;
 }
 
+// 初期状態の設定（テスト用）
 const initialState: GameStore = {
-  items: { "火のエレメント": 999, "水のエレメント": 999, "風のエレメント": 999, "土のエレメント": 999 },
+  items: { "m_water": 999, "m_fire": 999, "m_wind": 999, "m_earth": 999, "water": 999, "fire": 999 },
   spirit: { level: 1, exp: 0 },
   uiState: 'Idle',
   unlockedRecipes: [],
@@ -25,10 +26,13 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
       return { ...state, ...action.payload };
     case 'SYNTHESIZE': {
       const { recipeId } = action.payload;
+      // デバッグ用: ロードされている全レシピのIDを出力
+      console.log('Available Recipe IDs:', (engine as any).recipes.map((r: any) => r.id));
       const result = engine.synthesize(recipeId, state.items);
+      console.log('Synthesize Result for', recipeId, ':', result);
       if (result.success) {
         const newItems = { ...state.items };
-        // 素材の消費 (simulatorが返すconsumedMaterialsのみ)
+        // 消費素材の計算（無限素材は含めない）
         result.consumedMaterials.forEach(m => {
           if (newItems[m.id] !== undefined) {
             newItems[m.id] -= m.amount;
@@ -36,7 +40,7 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
         });
         // 成果物の追加
         if (result.output) {
-          newItems[result.output.name] = (newItems[result.output.name] || 0) + result.output.amount;
+          newItems[result.output.id] = (newItems[result.output.id] || 0) + result.output.amount;
         }
         
         // レシピアンロック
@@ -46,8 +50,12 @@ const gameReducer = (state: GameStore, action: Action): GameStore => {
 
         return { ...state, items: newItems, uiState: 'Success', unlockedRecipes: updatedUnlocked };
       }
-      return { ...state, uiState: 'Idle' };
+      return { ...state, uiState: 'Fail' };
     }
+    case 'SET_UI_STATE':
+      return { ...state, uiState: action.payload };
+    case 'UPDATE_STATE':
+      return { ...state, ...action.payload };
     default:
       return state;
   }

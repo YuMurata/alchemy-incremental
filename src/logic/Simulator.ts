@@ -9,6 +9,7 @@ export class Simulator {
 
   constructor(recipes: Recipe[]) {
     this.recipes = recipes;
+    console.log('Simulator initialized with recipes:', recipes.length);
   }
 
   // 無限素材リスト

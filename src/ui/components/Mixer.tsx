@@ -7,13 +7,15 @@ const Mixer: React.FC = () => {
 
   const handleMix = async () => {
     dispatch({ type: 'SET_UI_STATE', payload: 'Playing' });
+    // 状態更新を反映させるために少し待機
+    await new Promise(r => setTimeout(r, 0));
+    dispatch({ type: 'SYNTHESIZE', payload: { recipeId: 'r_steam' } });
     
-    // シミュレーション: "r_test_1" を合成
-    dispatch({ type: 'SYNTHESIZE', payload: { recipeId: 'r_test_1' } });
-    
+    // 合成完了後、演出時間を設けてから Idle に戻す（テスト用に Success 状態を維持）
     setTimeout(() => {
-      dispatch({ type: 'SET_UI_STATE', payload: 'Idle' });
-    }, 1000);
+        dispatch({ type: 'SET_UI_STATE', payload: 'Success' });
+        setTimeout(() => dispatch({ type: 'SET_UI_STATE', payload: 'Idle' }), 1000);
+    }, 500);
   };
 
   return (
