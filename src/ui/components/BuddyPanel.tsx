@@ -1,6 +1,18 @@
 import React from 'react';
 
-export const BuddyPanel: React.FC = () => {
+interface BuddyPanelProps {
+  spiritLevel: number;
+  homunculusFuel: number;
+  fairyGold: number;
+  onInteractSpirit: () => void;
+  onInteractHomunculus: () => void;
+  onInteractFairy: () => void;
+}
+
+export const BuddyPanel: React.FC<BuddyPanelProps> = ({ 
+  spiritLevel, homunculusFuel, fairyGold, 
+  onInteractSpirit, onInteractHomunculus, onInteractFairy 
+}) => {
   return (
     <div className="buddy-panel" style={{ 
       border: '2px solid #555', 
@@ -11,19 +23,19 @@ export const BuddyPanel: React.FC = () => {
     }}>
       <h3>錬金の相棒</h3>
       <div className="buddy-item" style={{ marginBottom: '10px' }}>
-        <strong>ホムンクルス (Lv.1)</strong>
+        <strong>ホムンクルス (燃料: {homunculusFuel})</strong>
         <p>自動合成: 停止中</p>
-        <button>燃料を捧げる</button>
+        <button onClick={onInteractHomunculus}>燃料を捧げる</button>
       </div>
       <div className="buddy-item" style={{ marginBottom: '10px' }}>
-        <strong>精霊 (Lv.1)</strong>
-        <p>品質ボーナス: +0%</p>
-        <button>素材を捧げる</button>
+        <strong>精霊 (Lv.{spiritLevel})</strong>
+        <p>品質ボーナス: +{spiritLevel * 5}%</p>
+        <button onClick={onInteractSpirit}>素材を捧げる</button>
       </div>
       <div className="buddy-item">
-        <strong>妖精 (Lv.1)</strong>
+        <strong>妖精 (ゴールド: {fairyGold})</strong>
         <p>自動売却: 停止中</p>
-        <button>ゴールドを捧げる</button>
+        <button onClick={onInteractFairy}>ゴールドを捧げる</button>
       </div>
     </div>
   );

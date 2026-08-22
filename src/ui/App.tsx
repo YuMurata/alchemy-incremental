@@ -11,7 +11,22 @@ import recipes from '../data/recipe-db.json';
 
 const AppContent: React.FC = () => {
   const { state } = useGameStore();
+  const [spiritLevel, setSpiritLevel] = useState(1);
+  const [homunculusFuel, setHomunculusFuel] = useState(0);
+  const [fairyGold, setFairyGold] = useState(0);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+
+  const interactWithSpirit = () => {
+    setSpiritLevel(prev => prev + 1);
+  };
+
+  const interactWithHomunculus = () => {
+    setHomunculusFuel(prev => prev + 10);
+  };
+
+  const interactWithFairy = () => {
+    setFairyGold(prev => prev + 100);
+  };
   const [showRecipeBook, setShowRecipeBook] = useState(false);
 
   const addMaterial = (name: string) => {
@@ -45,7 +60,14 @@ const AppContent: React.FC = () => {
         main: (
           <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr 250px', gap: '20px' }}>
             <div className="left-panel">
-              <BuddyPanel />
+              <BuddyPanel 
+                spiritLevel={spiritLevel} 
+                homunculusFuel={homunculusFuel} 
+                fairyGold={fairyGold}
+                onInteractSpirit={interactWithSpirit}
+                onInteractHomunculus={interactWithHomunculus}
+                onInteractFairy={interactWithFairy}
+              />
               <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
             </div>
             
