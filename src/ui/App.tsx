@@ -6,6 +6,7 @@ import { CauldronArea } from './components/CauldronArea';
 import { QuickMaterialPanel } from './components/QuickMaterialPanel';
 
 import { RecipeBook } from './components/RecipeBook';
+import { BuddyPanel } from './components/BuddyPanel';
 
 const AppContent: React.FC = () => {
   const { state } = useGameStore();
@@ -18,6 +19,7 @@ const AppContent: React.FC = () => {
 
   const synthesize = () => {
     console.log('合成実行:', selectedMaterials);
+    // TODO: ここに合成ロジック(dispatch)を繋ぐ
     setSelectedMaterials([]);
   };
 
@@ -27,22 +29,29 @@ const AppContent: React.FC = () => {
         header: <h1>Alchemy Incremental</h1>,
         spiritPanel: <div>精霊レベル: 1</div>,
         main: (
-          <div style={{ display: 'grid', gridTemplateAreas: '"anim" "mats" "recipes"', gap: '20px' }}>
-            <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
-            <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
+          <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr 250px', gap: '20px' }}>
+            <div className="left-panel">
+              <BuddyPanel />
+              <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
+            </div>
             
-            <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
-              {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
-            </button>
-            {showRecipeBook && <RecipeBook />}
+            <div className="center-area">
+              <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
+              <div className="synthesis-status">
+                <h3>選択中:</h3>
+                {selectedMaterials.map((m, i) => (
+                  <span key={i}>
+                    {m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
+                  </span>
+                ))}
+              </div>
+            </div>
 
-            <div className="synthesis-status">
-              <h3>選択中:</h3>
-              {selectedMaterials.map((m, i) => (
-                <span key={i}>
-                  {m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
-                </span>
-              ))}
+            <div className="right-panel">
+              <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
+                {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
+              </button>
+              {showRecipeBook && <RecipeBook />}
             </div>
           </div>
         ),
