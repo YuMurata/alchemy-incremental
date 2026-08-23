@@ -29,6 +29,18 @@ const AppContent: React.FC = () => {
   };
   const [showRecipeBook, setShowRecipeBook] = useState(false);
 
+  const elementNames: Record<string, string> = {
+    'e_fire': '火（エレメント）',
+    'e_water': '水（エレメント）',
+    'e_wind': '風（エレメント）',
+    'e_earth': '土（エレメント）',
+    'fire': '火',
+    'water': '水',
+    'wind': '風',
+    'earth': '土',
+    'steam': '蒸気'
+  };
+
   const addMaterial = (name: string) => {
     setSelectedMaterials(prev => prev.length < 3 ? [...prev, name] : prev);
   };
@@ -43,7 +55,6 @@ const AppContent: React.FC = () => {
     if (recipe) {
       dispatch({ type: 'SYNTHESIZE', payload: { recipeId: recipe.id } });
       setSelectedMaterials([]);
-      // 成功演出: 妖精が喜ぶ（妖精のゴールドが増えるインタラクション）
       setFairyGold(prev => prev + 50);
       alert(`${recipe.name} を合成しました！`);
     } else {
@@ -55,7 +66,6 @@ const AppContent: React.FC = () => {
     <GameLayout
       children={{
         header: <h1>Alchemy Incremental</h1>,
-        spiritPanel: <></>,
         main: (
           <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr 250px', gap: '20px' }}>
             <div className="left-panel">
@@ -76,7 +86,7 @@ const AppContent: React.FC = () => {
                 <h3>選択中:</h3>
                 {selectedMaterials.map((m, i) => (
                   <span key={i}>
-                    {m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
+                    {elementNames[m] || m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
                   </span>
                 ))}
               </div>

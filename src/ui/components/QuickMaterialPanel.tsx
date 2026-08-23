@@ -18,6 +18,13 @@ export const QuickMaterialPanel: React.FC<{
     'steam': '蒸気'
   };
 
+  const translatedItems = Object.entries(items)
+    .filter(([name]) => !infiniteMaterials.includes(name))
+    .reduce((acc, [name, count]) => {
+      acc[name] = count;
+      return acc;
+    }, {} as Record<string, number>);
+
   return (
     <div className="quick-material-panel" style={{ 
       gridArea: 'mats',
@@ -29,12 +36,11 @@ export const QuickMaterialPanel: React.FC<{
       borderRadius: '8px'
     }}>
       <h3>素材リスト</h3>
-      {Object.entries(items).map(([name, count]) => {
-        const isInfinite = infiniteMaterials.includes(name);
+      {Object.entries(translatedItems).map(([name, count]) => {
         const displayName = elementNames[name] || name;
         return (
           <button key={name} onClick={() => onAddMaterial(name)} style={{ padding: '10px' }}>
-            {displayName} {isInfinite ? '' : `(${count})`}
+            {displayName} ({count})
           </button>
         );
       })}

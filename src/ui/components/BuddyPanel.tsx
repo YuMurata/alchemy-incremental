@@ -25,7 +25,7 @@ export const BuddyPanel: React.FC<BuddyPanelProps> = ({
       <div className="buddy-item" style={{ marginBottom: '10px' }}>
         <strong>ホムンクルス (燃料: {homunculusFuel})</strong>
         <p>自動合成: 停止中</p>
-        <button onClick={onInteractHomunculus}>燃料を捧げる</button>
+        <button onClick={onInteractHomunculus}>触媒を捧げる</button>
       </div>
       <div className="buddy-item" style={{ marginBottom: '10px' }}>
         <strong>精霊 (Lv.{spiritLevel})</strong>

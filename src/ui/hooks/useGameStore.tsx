@@ -14,8 +14,7 @@ export interface Action {
 }
 
 const items: Record<string, number> = { 
-  "e_water": Infinity, "e_fire": Infinity, "e_wind": Infinity, "e_earth": Infinity,
-  "m_steam": 0
+  "e_water": Infinity, "e_fire": Infinity, "e_wind": Infinity, "e_earth": Infinity
 };
 // 初期状態の設定（テスト用）
 const initialState: GameStore = {

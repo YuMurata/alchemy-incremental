@@ -16,7 +16,7 @@ export const RecipeBook: React.FC = () => {
               <strong>{recipe.name}</strong>: {recipe.ingredients.map((ing: any) => ing.name).join(' + ')}
             </div>
           ))}
-        {(!state.unlockedRecipes || state.unlockedRecipes.length === 0) && <p>未発見のレシピはありません。</p>}
+        {(!state.unlockedRecipes || state.unlockedRecipes.length === 0) && <p>発見済みのレシピはありません。</p>}
       </div>
     </div>
   );
