@@ -7,13 +7,14 @@ import { SynthesisResult, Recipe } from '../types';
 export class Simulator {
   private recipes: Recipe[] = [];
 
-  constructor(recipes: Recipe[]) {
+  constructor(recipes: any[]) {
     this.recipes = recipes;
     console.log('Simulator initialized with recipes:', recipes.length);
+    console.log('Recipe IDs found:', recipes.map(r => r.id));
   }
 
   // 無限素材リスト
-  private infiniteMaterials = new Set(['fire_el', 'water_el', 'wind_el', 'earth_el']);
+  private infiniteMaterials = new Set(['e_fire', 'e_water', 'e_wind', 'e_earth']);
 
   synthesize(recipeId: string, inventory: Record<string, number>): SynthesisResult {
     const recipe = this.recipes.find(r => r.id === recipeId);

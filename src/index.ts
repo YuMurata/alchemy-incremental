@@ -15,11 +15,10 @@ const sampleRecipes: Recipe[] = [
   }
 ];
 
-// エンジンの初期化 (ファイルパスを自分で解決する仕様)
-import recipes from './data/recipe-db.json';
-import { Simulator } from './logic/Simulator.js';
+import recipeData from '../data/recipe-db.json';
+import { Simulator } from './logic/Simulator';
 
-const engine = new Simulator(recipes as any);
+const engine = new Simulator(recipeData as any);
 
 
 // サンプル在庫 (十分な素材)
