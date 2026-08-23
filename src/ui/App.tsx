@@ -85,13 +85,7 @@ const AppContent: React.FC = () => {
   };
 
   const getSynthesisHint = () => {
-    if (selectedMaterials.length === 0) return "素材を選択してください";
-    const recipe = recipes.find(r => {
-        const ingredientIds = r.ingredients.map((ing: any) => ing.id);
-        return selectedMaterials.length === ingredientIds.length &&
-               selectedMaterials.every(m => ingredientIds.includes(m));
-    });
-    return recipe ? `${recipe.name} ができるかも…？` : "何も生まれない組み合わせのようです";
+    return "合成開始ボタンを押すと素材を試せます";
   };
 
   return (
