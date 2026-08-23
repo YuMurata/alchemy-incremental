@@ -73,7 +73,7 @@ const AppContent: React.FC = () => {
       setFairyGold(prev => prev + 50);
       alert(`${recipe.name} を合成しました！`);
     } else {
-      alert("その組み合わせのレシピはありません。");
+      console.warn("レシピ合成失敗: 合致するレシピがありません。");
     }
   };
 
@@ -81,71 +81,74 @@ const AppContent: React.FC = () => {
     <GameLayout
       children={{
         header: <h1>Alchemy Incremental</h1>,
-        spiritPanel: <></>,
         main: (
-          <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '20px', padding: '20px' }}>
-            <div className="left-panel" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
-              <div className="upgrade-panel" style={{ 
-                border: '2px solid #555', 
-                padding: '15px', 
-                borderRadius: '8px',
-                backgroundColor: '#2a1a10',
-                color: '#d4af37'
-              }}>
-                <h3>アップグレードエリア</h3>
-                <label>
-                  <input type="checkbox" checked={showPurchased} onChange={() => setShowPurchased(!showPurchased)} />
-                  購入済みを表示
-                </label>
-                <div className="upgrade-list" style={{ marginTop: '10px' }}>
-                  {upgrades
-                    .filter(u => showPurchased || !u.purchased)
-                    .map(u => (
-                      <div key={u.id} className="upgrade-item" style={{ borderTop: '1px solid #555', paddingTop: '5px' }}>
-                        <p><strong>{u.name}</strong> {u.purchased && '(購入済み)'}</p>
-                        <p>効果: {u.effect}</p>
-                        {!u.purchased && (
-                          <button onClick={() => purchaseUpgrade(u.id)}>コスト: {u.cost}ゴールド</button>
-                        )}
-                      </div>
-                    ))
-                  }
+          <div style={{ padding: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '20px' }}>
+              <div className="left-panel" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
+                <div className="upgrade-panel" style={{ 
+                  border: '2px solid #555', 
+                  padding: '15px', 
+                  borderRadius: '8px',
+                  backgroundColor: '#2a1a10',
+                  color: '#d4af37'
+                }}>
+                  <h3>アップグレードエリア</h3>
+                  <label>
+                    <input type="checkbox" checked={showPurchased} onChange={() => setShowPurchased(!showPurchased)} />
+                    購入済みを表示
+                  </label>
+                  <div className="upgrade-list" style={{ marginTop: '10px' }}>
+                    {upgrades
+                      .filter(u => showPurchased || !u.purchased)
+                      .map(u => (
+                        <div key={u.id} className="upgrade-item" style={{ borderTop: '1px solid #555', paddingTop: '5px' }}>
+                          <p><strong>{u.name}</strong> {u.purchased && '(購入済み)'}</p>
+                          <p>効果: {u.effect}</p>
+                          {!u.purchased && (
+                            <button onClick={() => purchaseUpgrade(u.id)}>コスト: {u.cost}ゴールド</button>
+                          )}
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+
+                <div className="upgrade-panel" style={{ 
+                  border: '2px solid #555', 
+                  padding: '15px', 
+                  borderRadius: '8px',
+                  backgroundColor: '#2a1a10',
+                  color: '#d4af37'
+                }}>
+                  <h3>錬金の相棒エリア（アップグレードエリア）</h3>
+                  <BuddyPanel 
+                    spiritLevel={spiritLevel} 
+                    homunculusFuel={homunculusFuel} 
+                    fairyGold={fairyGold}
+                    onInteractSpirit={interactWithSpirit}
+                    onInteractHomunculus={interactWithHomunculus}
+                    onInteractFairy={interactWithFairy}
+                  />
                 </div>
               </div>
-            </div>
-            
-            <div className="center-area" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
-              <div className="synthesis-status">
-                <h3>選択中:</h3>
-                {selectedMaterials.map((m, i) => (
-                  <span key={i}>
-                    {elementNames[m] || m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
-                  </span>
-                ))}
-              </div>
-              <div className="buddy-panel" style={{ 
-                border: '2px solid #555', 
-                padding: '15px', 
-                borderRadius: '8px',
-                backgroundColor: '#2a1a10',
-                color: '#d4af37'
-              }}>
-                <BuddyPanel 
-                  spiritLevel={spiritLevel} 
-                  homunculusFuel={homunculusFuel} 
-                  fairyGold={fairyGold}
-                  onInteractSpirit={interactWithSpirit}
-                  onInteractHomunculus={interactWithHomunculus}
-                  onInteractFairy={interactWithFairy}
-                />
-              </div>
-              <div className="right-panel">
-                <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
-                  {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
-                </button>
-                {showRecipeBook && <RecipeBook />}
+              
+              <div className="center-area" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
+                <div className="synthesis-status">
+                  <h3>選択中:</h3>
+                  {selectedMaterials.map((m, i) => (
+                    <span key={i}>
+                      {elementNames[m] || m} <button onClick={() => setSelectedMaterials(prev => prev.filter((_, idx) => idx !== i))}>解除</button>
+                    </span>
+                  ))}
+                </div>
+                <div className="right-panel">
+                  <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
+                    {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
+                  </button>
+                  {showRecipeBook && <RecipeBook />}
+                </div>
               </div>
             </div>
           </div>
