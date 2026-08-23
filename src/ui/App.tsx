@@ -60,6 +60,9 @@ const AppContent: React.FC = () => {
     setSelectedMaterials(prev => prev.length < 3 ? [...prev, name] : prev);
   };
 
+  const [synthesisMessage, setSynthesisMessage] = useState<string | null>(null);
+  const [failedRecipes, setFailedRecipes] = useState<string[][]>([]);
+
   const synthesize = () => {
     const recipe = recipes.find(r => {
       const ingredientIds = r.ingredients.map((ing: any) => ing.id);
@@ -71,10 +74,24 @@ const AppContent: React.FC = () => {
       dispatch({ type: 'SYNTHESIZE', payload: { recipeId: recipe.id } });
       setSelectedMaterials([]);
       setFairyGold(prev => prev + 50);
-      alert(`${recipe.name} を合成しました！`);
+      setSynthesisMessage(`${recipe.name} を合成しました！`);
     } else {
-      console.warn("レシピ合成失敗: 合致するレシピがありません。");
+      setFailedRecipes(prev => [...prev, [...selectedMaterials]]);
+      setSynthesisMessage("合成に失敗しました...");
     }
+    
+    // 数秒後にメッセージをクリア
+    setTimeout(() => setSynthesisMessage(null), 3000);
+  };
+
+  const getSynthesisHint = () => {
+    if (selectedMaterials.length === 0) return "素材を選択してください";
+    const recipe = recipes.find(r => {
+        const ingredientIds = r.ingredients.map((ing: any) => ing.id);
+        return selectedMaterials.length === ingredientIds.length &&
+               selectedMaterials.every(m => ingredientIds.includes(m));
+    });
+    return recipe ? `${recipe.name} ができるかも…？` : "何も生まれない組み合わせのようです";
   };
 
   return (
@@ -91,7 +108,15 @@ const AppContent: React.FC = () => {
               
               {/* 中央: 釜 + 選択中エリア + アップグレード */}
               <div className="center-area" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ textAlign: 'center', padding: '10px', background: '#332', borderRadius: '5px' }}>
+                  {getSynthesisHint()}
+                </div>
                 <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
+                {synthesisMessage && (
+                  <div className="synthesis-message" style={{ textAlign: 'center', color: synthesisMessage.includes('失敗') ? '#ff6666' : '#66ff66' }}>
+                    {synthesisMessage}
+                  </div>
+                )}
                 <div className="synthesis-status">
                   <h3>選択中:</h3>
                   {selectedMaterials.map((m, i) => (
@@ -109,6 +134,11 @@ const AppContent: React.FC = () => {
                   color: '#d4af37'
                 }}>
                   <h3>アップグレードエリア</h3>
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                    <button onClick={() => {/* タブ切替用 */}}>ホムンクルス</button>
+                    <button onClick={() => {/* タブ切替用 */}}>妖精</button>
+                    <button onClick={() => {/* タブ切替用 */}}>精霊</button>
+                  </div>
                   <label>
                     <input type="checkbox" checked={showPurchased} onChange={() => setShowPurchased(!showPurchased)} />
                     購入済みを表示
