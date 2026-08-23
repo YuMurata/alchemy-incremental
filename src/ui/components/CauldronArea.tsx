@@ -15,8 +15,10 @@ export const CauldronArea: React.FC<{ selectedMaterials: string[], onSynthesize:
   };
 
   const prediction = getPrediction(selectedMaterials);
-  // 合成結果が「失敗」だと分かっているもののみ合成不可（今は？？？は許可）
-  const isImpossible = prediction === '失敗';
+  // 現状は「？？？」なら探索の余地ありとして合成可能、それ以外（レシピに存在して成功するもの）は表示して合成可能。
+  // 合成不可とするケースは、例えば「以前の合成履歴で失敗と判定された組み合わせ」など。
+  // ぷりんさんの指示に基づき、まずはシンプルに「？？？」以外は合成可能とする制御を維持します。
+  const isImpossible = false; // 失敗と判明しているリストを持たない現状では常に合成可能
 
   return (
     <div className="cauldron-area" style={{ 
