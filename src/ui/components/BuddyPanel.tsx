@@ -15,10 +15,6 @@ export const BuddyPanel: React.FC<BuddyPanelProps> = ({
 }) => {
   return (
     <div className="buddy-panel" style={{ 
-      border: '2px solid #555', 
-      padding: '15px', 
-      borderRadius: '8px',
-      backgroundColor: '#2a1a10',
       color: '#d4af37'
     }}>
       <h3>錬金の相棒</h3>

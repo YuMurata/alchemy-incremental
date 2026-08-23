@@ -15,6 +15,21 @@ const AppContent: React.FC = () => {
   const [homunculusFuel, setHomunculusFuel] = useState(0);
   const [fairyGold, setFairyGold] = useState(0);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+  const [showPurchased, setShowPurchased] = useState(false);
+  const [upgrades, setUpgrades] = useState([
+    { id: 'auto_synthesizer', name: '自動合成機', effect: '自動で合成を行う', cost: 100, purchased: false },
+    { id: 'spirit_boost', name: '精霊の加護', effect: '精霊Lvアップ効率2倍', cost: 500, purchased: false }
+  ]);
+
+  const purchaseUpgrade = (id: string) => {
+    const upgrade = upgrades.find(u => u.id === id);
+    if (upgrade && fairyGold >= upgrade.cost) {
+      setFairyGold(prev => prev - upgrade.cost);
+      setUpgrades(prev => prev.map(u => u.id === id ? { ...u, purchased: true } : u));
+    } else {
+      alert("ゴールドが足りません！");
+    }
+  };
 
   const interactWithSpirit = () => {
     setSpiritLevel(prev => prev + 1);
@@ -68,20 +83,39 @@ const AppContent: React.FC = () => {
         header: <h1>Alchemy Incremental</h1>,
         spiritPanel: <></>,
         main: (
-          <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr 250px', gap: '20px' }}>
-            <div className="left-panel">
-              <BuddyPanel 
-                spiritLevel={spiritLevel} 
-                homunculusFuel={homunculusFuel} 
-                fairyGold={fairyGold}
-                onInteractSpirit={interactWithSpirit}
-                onInteractHomunculus={interactWithHomunculus}
-                onInteractFairy={interactWithFairy}
-              />
+          <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '20px', padding: '20px' }}>
+            <div className="left-panel" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <QuickMaterialPanel items={state.items} onAddMaterial={addMaterial} />
+              <div className="upgrade-panel" style={{ 
+                border: '2px solid #555', 
+                padding: '15px', 
+                borderRadius: '8px',
+                backgroundColor: '#2a1a10',
+                color: '#d4af37'
+              }}>
+                <h3>アップグレードエリア</h3>
+                <label>
+                  <input type="checkbox" checked={showPurchased} onChange={() => setShowPurchased(!showPurchased)} />
+                  購入済みを表示
+                </label>
+                <div className="upgrade-list" style={{ marginTop: '10px' }}>
+                  {upgrades
+                    .filter(u => showPurchased || !u.purchased)
+                    .map(u => (
+                      <div key={u.id} className="upgrade-item" style={{ borderTop: '1px solid #555', paddingTop: '5px' }}>
+                        <p><strong>{u.name}</strong> {u.purchased && '(購入済み)'}</p>
+                        <p>効果: {u.effect}</p>
+                        {!u.purchased && (
+                          <button onClick={() => purchaseUpgrade(u.id)}>コスト: {u.cost}ゴールド</button>
+                        )}
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
             </div>
             
-            <div className="center-area">
+            <div className="center-area" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <CauldronArea selectedMaterials={selectedMaterials} onSynthesize={synthesize} />
               <div className="synthesis-status">
                 <h3>選択中:</h3>
@@ -91,13 +125,28 @@ const AppContent: React.FC = () => {
                   </span>
                 ))}
               </div>
-            </div>
-
-            <div className="right-panel">
-              <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
-                {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
-              </button>
-              {showRecipeBook && <RecipeBook />}
+              <div className="buddy-panel" style={{ 
+                border: '2px solid #555', 
+                padding: '15px', 
+                borderRadius: '8px',
+                backgroundColor: '#2a1a10',
+                color: '#d4af37'
+              }}>
+                <BuddyPanel 
+                  spiritLevel={spiritLevel} 
+                  homunculusFuel={homunculusFuel} 
+                  fairyGold={fairyGold}
+                  onInteractSpirit={interactWithSpirit}
+                  onInteractHomunculus={interactWithHomunculus}
+                  onInteractFairy={interactWithFairy}
+                />
+              </div>
+              <div className="right-panel">
+                <button onClick={() => setShowRecipeBook(!showRecipeBook)}>
+                  {showRecipeBook ? 'レシピ本を閉じる' : '錬金レシピ本を開く'}
+                </button>
+                {showRecipeBook && <RecipeBook />}
+              </div>
             </div>
           </div>
         ),

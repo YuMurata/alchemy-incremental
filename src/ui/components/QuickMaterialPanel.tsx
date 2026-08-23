@@ -18,12 +18,13 @@ export const QuickMaterialPanel: React.FC<{
     'steam': '蒸気'
   };
 
-  const translatedItems = Object.entries(items)
-    .filter(([name]) => !infiniteMaterials.includes(name))
-    .reduce((acc, [name, count]) => {
-      acc[name] = count;
-      return acc;
-    }, {} as Record<string, number>);
+  const translatedItems = {
+    ...items,
+    'e_fire': 0, // Mock initial
+    'e_water': 0,
+    'e_wind': 0,
+    'e_earth': 0
+  };
 
   return (
     <div className="quick-material-panel" style={{ 
