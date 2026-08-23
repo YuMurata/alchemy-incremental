@@ -11,13 +11,14 @@
             "id": "89213ec4e9c7b128",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "無題のファイル.base",
-                "viewName": "表"
+                "file": "開発指針_素材とエレメントの分離.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "無題のファイル"
+              "icon": "lucide-file",
+              "title": "開発指針_素材とエレメントの分離"
             }
           }
         ]
@@ -203,9 +204,12 @@
       "bases:新規ベースを作成": false
     }
   },
-  "active": "5ffe49f6c1f8c976",
+  "active": "89213ec4e9c7b128",
   "lastOpenFiles": [
     "無題のファイル.base",
-    "ようこそ.md"
+    "開発指針_素材とエレメントの分離.md",
+    "開発ログ_2026-08-23.md",
+    "ようこそ.md",
+    "2026-08-23-dev-log.md"
   ]
 }
